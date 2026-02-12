@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Renting</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI, sans-serif;
+    background:linear-gradient(-45deg,#111,#1c1c1c,#2a2a2a,#141414);
+    background-size:400% 400%;
+    animation:gradientMove 12s ease infinite;
+    color:white;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    padding:25px;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+}
+
+nav a{
+    width:160px;
+    text-align:center;
+    padding:12px 0;
+    text-decoration:none;
+    color:#ccc;
+    font-size:16px;
+    letter-spacing:1px;
+    position:relative;
+    transition:0.3s;
+    border:1px solid #333;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0%;
+    height:2px;
+    background:linear-gradient(90deg,#888,#fff,#888);
+    transition:0.4s;
+}
+
+nav a:hover{
+    color:white;
+    border-color:#777;
+    box-shadow:0 0 15px rgba(255,255,255,0.2);
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+h1{
+    text-align:center;
+    margin-top:120px;
+    font-weight:300;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Главная</a>
+    <a href="#">Квартиры</a>
+    <a href="#">Дома</a>
+    <a href="#">Контакты</a>
+</nav>
+
+<h1>Аренда недвижимости</h1>
+
+</body>
+</html>

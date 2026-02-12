@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI, sans-serif;
+    background:linear-gradient(-45deg,#111,#1c1c1c,#2a2a2a,#141414);
+    background-size:400% 400%;
+    animation:gradientMove 12s ease infinite;
+    color:white;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* NAVIGATION */
+nav{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    padding:25px;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+}
+
+nav a{
+    width:160px;
+    text-align:center;
+    padding:12px 0;
+    text-decoration:none;
+    color:#ccc;
+    font-size:16px;
+    letter-spacing:1px;
+    position:relative;
+    transition:0.3s;
+    border:1px solid #333;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0%;
+    height:2px;
+    background:linear-gradient(90deg,#aaa,#fff,#aaa);
+    transition:0.4s;
+}
+
+nav a:hover{
+    color:white;
+    border-color:#aaa;
+    box-shadow:0 0 20px rgba(255,255,255,0.3);
+    transform:translateY(-3px);
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* DASHBOARD */
+.dashboard{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:100px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:250px;
+    padding:30px;
+    text-align:center;
+    background:rgba(0,0,0,0.6);
+    border:1px solid #333;
+    transition:0.3s;
+}
+
+.card:hover{
+    border-color:#aaa;
+    box-shadow:0 0 25px rgba(255,255,255,0.2);
+    transform:translateY(-5px);
+}
+
+.card h2{
+    margin:0;
+    font-size:40px;
+    font-weight:300;
+}
+
+.card p{
+    margin-top:10px;
+    color:#aaa;
+    letter-spacing:1px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Главная</a>
+    <a href="renting.html">Аренда</a>
+    <a href="buying.html">Покупка</a>
+    <a href="selling.html">Продажа</a>
+</nav>
+
+<div class="dashboard">
+    <div class="card">
+        <h2 id="buyCount">0</h2>
+        <p>Заявки на покупку</p>
+    </div>
+
+    <div class="card">
+        <h2 id="rentCount">0</h2>
+        <p>Заявки на аренду</p>
+    </div>
+
+    <div class="card">
+        <h2 id="sellCount">0</h2>
+        <p>Объявления о продаже</p>
+    </div>
+</div>
+
+<script>
+/* Демо обновление в реальном времени */
+let buy = 3;
+let rent = 5;
+let sell = 2;
+
+setInterval(() => {
+    buy += Math.floor(Math.random()*2);
+    rent += Math.floor(Math.random()*2);
+    sell += Math.floor(Math.random()*2);
+
+    document.getElementById("buyCount").textContent = buy;
+    document.getElementById("rentCount").textContent = rent;
+    document.getElementById("sellCount").textContent = sell;
+}, 3000);
+</script>
+
+</body>
+</html>

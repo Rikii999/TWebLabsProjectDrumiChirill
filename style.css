@@ -1,0 +1,63 @@
+:root {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --accent: #38bdf8;
+    --text: #f1f5f9;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+/* Карточки объявлений */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.house-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid #334155;
+}
+
+.house-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+
+.house-card img { width: 100%; height: 200px; object-fit: cover; }
+
+.card-content { padding: 20px; }
+
+.price { font-size: 1.5rem; color: var(--accent); font-weight: bold; }
+
+/* Стили формы */
+.form-group { margin-bottom: 15px; }
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 8px;
+}
+
+button {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover { opacity: 0.9; transform: scale(1.05); }

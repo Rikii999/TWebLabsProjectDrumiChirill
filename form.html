@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Добавить объявление</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI;
+    background:linear-gradient(-45deg,#111,#1c1c1c,#2a2a2a,#141414);
+    background-size:400% 400%;
+    animation:gradientMove 12s ease infinite;
+    color:white;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+form{
+    width:400px;
+    margin:100px auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input, select{
+    padding:12px;
+    background:#222;
+    border:1px solid #444;
+    color:white;
+}
+
+button{
+    padding:12px;
+    background:#333;
+    border:1px solid #777;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    box-shadow:0 0 15px rgba(255,255,255,0.3);
+}
+</style>
+</head>
+
+<body>
+
+<form id="propertyForm">
+    <input type="text" placeholder="Имя" id="name" required>
+    <input type="email" placeholder="Email (@gmail.ru)" id="email" required>
+    <input type="text" placeholder="Телефон (только цифры)" id="phone" required>
+    <input type="text" placeholder="Название объекта" id="title" required>
+    <input type="number" placeholder="Цена" id="price" required>
+
+    <select id="type">
+        <option value="sale">Продажа</option>
+        <option value="rent">Аренда</option>
+        <option value="buy_request">Покупка</option>
+    </select>
+
+    <button type="submit">Отправить</button>
+</form>
+
+<script>
+document.getElementById("propertyForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    fetch('http://localhost:3000/api/add', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            title: document.getElementById("title").value,
+            price: document.getElementById("price").value,
+            type: document.getElementById("type").value
+        })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message))
+    .catch(err => console.log(err));
+});
+</script>
+
+</body>
+</html>

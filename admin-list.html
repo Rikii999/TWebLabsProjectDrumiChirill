@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Все заявки</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI;
+    background:#111;
+    color:white;
+}
+
+table{
+    width:95%;
+    margin:50px auto;
+    border-collapse:collapse;
+}
+
+th, td{
+    padding:12px;
+    border:1px solid #333;
+    text-align:center;
+}
+
+th{
+    background:#222;
+}
+</style>
+</head>
+
+<body>
+
+<h2 style="text-align:center;margin-top:30px;">Все заявки</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Телефон</th>
+            <th>Тип</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Дата</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+<script>
+fetch('http://localhost:3000/api/all')
+.then(res => res.json())
+.then(data => {
+
+    let html = "";
+
+    data.forEach(item => {
+        html += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.email}</td>
+                <td>${item.phone}</td>
+                <td>${item.type}</td>
+                <td>${item.title}</td>
+                <td>${item.price}</td>
+                <td>${item.created_at}</td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("tableBody").innerHTML = html;
+});
+</script>
+
+</body>
+</html>
