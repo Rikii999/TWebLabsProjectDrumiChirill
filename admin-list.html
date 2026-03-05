@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Все заявки</title>
 
-<link rel="stylesheet" href="requests.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Все заявки</title>
+
+    <link rel="stylesheet" href="requests.css">
 </head>
 
 <body>
 
-<h2 class="title">Все заявки</h2>
+    <h2 class="title">Все заявки</h2>
 
-<table>
-    <thead>
-        <tr>
-            <th>Имя</th>
-            <th>Email</th>
-            <th>Телефон</th>
-            <th>Тип</th>
-            <th>Название</th>
-            <th>Цена</th>
-            <th>Дата</th>
-        </tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-</table>
+    <table>
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Email</th>
+                <th>Телефон</th>
+                <th>Тип</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Дата</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
 
-<script>
-fetch('http://localhost:3000/api/all')
-.then(res => res.json())
-.then(data => {
+    <script>
+        fetch('http://localhost:3000/api/all')
+            .then(res => res.json())
+            .then(data => {
 
-    let html = "";
+                let html = "";
 
-    data.forEach(item => {
-        html += `
+                data.forEach(item => {
+                    html += `
             <tr>
                 <td>${item.name}</td>
                 <td>${item.email}</td>
@@ -45,11 +46,12 @@ fetch('http://localhost:3000/api/all')
                 <td>${item.created_at}</td>
             </tr>
         `;
-    });
+                });
 
-    document.getElementById("tableBody").innerHTML = html;
-});
-</script>
+                document.getElementById("tableBody").innerHTML = html;
+            });
+    </script>
 
 </body>
+
 </html>
